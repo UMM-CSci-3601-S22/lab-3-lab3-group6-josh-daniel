@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Todo } from './todo';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TodoService {
   // todos server api url:
   readonly todoURL: string = environment.apiUrl + 'todos';
@@ -18,9 +16,11 @@ export class TodoService {
   getTodos(filters?: {category?: string; status?: boolean }): Observable<Todo[]> {
     let httpParams: HttpParams = new HttpParams();
     if (filters) {
+      // not working
       if (filters.category) {
         httpParams = httpParams.set('category', filters.category);
       }
+      // working
       if (filters.status) {
         httpParams = httpParams.set('status', filters.status);
       }
@@ -40,11 +40,13 @@ export class TodoService {
   filterTodos(todos: Todo[], filters: { owner?: string; body?: string }): Todo[] {
     let filteredTodos = todos;
 
+    // working
     if (filters.owner) {
       filters.owner = filters.owner.toLowerCase();
       filteredTodos = filteredTodos.filter(todo => todo.owner.toLowerCase().indexOf(filters.owner) !== -1);
     }
 
+    // not working
     if (filters.body) {
       filters.body = filters.body.toLowerCase();
       filteredTodos = filteredTodos.filter(todo => todo.body.toLowerCase().indexOf(filters.body) !== -1);
