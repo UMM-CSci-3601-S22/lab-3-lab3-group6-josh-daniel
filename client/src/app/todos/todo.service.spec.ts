@@ -87,8 +87,46 @@ describe('TodoService', () => {
       // Check that the request made to that URL was a GET request.
       expect(req.request.method).toEqual('GET');
 
-      // Check that the role parameter was 'admin'
+      // Check that the status parameter was 'complete'
       expect(req.request.params.get('status')).toEqual('complete');
+
+      req.flush(testTodos);
+    });
+
+    it('correctly calls api/todos with filter parameter \'body\'', () => {
+      todoService.getTodos({ body: 'dog' }).subscribe(
+        todos => expect(todos).toBe(testTodos)
+      );
+
+      // Specify that (exactly) one request will be made to the specified URL with the status parameter.
+      const req = httpTestingController.expectOne(
+        (request) => request.url.startsWith(todoService.todoUrl) && request.params.has('body')
+      );
+
+      // Check that the request made to that URL was a GET request.
+      expect(req.request.method).toEqual('GET');
+
+      // Check that the body parameter was 'dog'
+      expect(req.request.params.get('body')).toEqual('dog');
+
+      req.flush(testTodos);
+    });
+
+    it('correctly calls api/todos with filter parameter \'category\'', () => {
+      todoService.getTodos({ category: 'Homework' }).subscribe(
+        todos => expect(todos).toBe(testTodos)
+      );
+
+      // Specify that (exactly) one request will be made to the specified URL with the status parameter.
+      const req = httpTestingController.expectOne(
+        (request) => request.url.startsWith(todoService.todoUrl) && request.params.has('category')
+      );
+
+      // Check that the request made to that URL was a GET request.
+      expect(req.request.method).toEqual('GET');
+
+      // Check that the category parameter was 'Homework'
+      expect(req.request.params.get('category')).toEqual('Homework');
 
       req.flush(testTodos);
     });
