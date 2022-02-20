@@ -75,7 +75,7 @@ describe('TodoService', () => {
   describe('Calling getTodos() with parameters correctly forms the HTTP request', () => {
 
     it('correctly calls api/todos with filter parameter \'status\'', () => {
-      todoService.getTodos({ status: 'complete' }).subscribe(
+      todoService.getTodos({ status: true }).subscribe(
         todos => expect(todos).toBe(testTodos)
       );
 
@@ -88,7 +88,7 @@ describe('TodoService', () => {
       expect(req.request.method).toEqual('GET');
 
       // Check that the status parameter was 'complete'
-      expect(req.request.params.get('status')).toEqual('complete');
+      expect(req.request.params.get('status')).toEqual('true');
 
       req.flush(testTodos);
     });
@@ -115,7 +115,7 @@ describe('TodoService', () => {
 
     it('correctly calls api/todos with multiple filter parameters', () => {
 
-      todoService.getTodos({ status: 'complete', category: 'Dog Stuff'}).subscribe(
+      todoService.getTodos({ status: true, category: 'Dog Stuff'}).subscribe(
         todos => expect(todos).toBe(testTodos)
       );
 
@@ -129,7 +129,7 @@ describe('TodoService', () => {
       expect(req.request.method).toEqual('GET');
 
       // Check that the role parameters are correct
-      expect(req.request.params.get('status')).toEqual('complete');
+      expect(req.request.params.get('status')).toEqual('true');
       expect(req.request.params.get('category')).toEqual('Dog Stuff');
 
       req.flush(testTodos);

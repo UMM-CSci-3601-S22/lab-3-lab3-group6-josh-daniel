@@ -39,7 +39,7 @@ export class MockTodoService extends TodoService {
     super(null);
   }
 
-  getTodos(filters?: { category?: string; status?: string }): Observable<Todo[]> {
+  getTodos(filters?: { category?: string; status?: boolean }): Observable<Todo[]> {
     return of(MockTodoService.testTodos);
   }
 
