@@ -9,7 +9,7 @@ import { Todo } from './todo';
 })
 export class TodoService {
   // todos server api url:
-  readonly todoURL: string = environment.apiUrl + 'todos';
+  readonly todoUrl: string = environment.apiUrl + 'todos';
 
   // Inject an HttpClient
   constructor(private httpClient: HttpClient) { }
