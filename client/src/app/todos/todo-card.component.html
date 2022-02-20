@@ -5,7 +5,7 @@
   </mat-card-header>
   <mat-card-content *ngIf="!this.simple">
     <p>Category: <span class="todo-card-category">{{ todo.category }}</span></p>
-    <p>Status: <span class="todo-card-status" *ngIf="todo.status">Completed</span><span class="todo-card-status" *ngIf="!todo.status">Uncompleted</span></p>
+    <p>Status: <span class="todo-card-status" *ngIf="todo.status">Complete</span><span class="todo-card-status" *ngIf="!todo.status">Incomplete</span></p>
     <p>Body:  <span class="todo-card-body">{{ todo.category }}</span></p>
   </mat-card-content>
 </mat-card>
