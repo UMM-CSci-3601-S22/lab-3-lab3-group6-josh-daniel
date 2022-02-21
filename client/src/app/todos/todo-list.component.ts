@@ -17,8 +17,8 @@ export class TodoListComponent implements OnInit {
   public todoStatus: boolean;
   public todoBody: string;
   public todoCategory: string;
-  public viewType: 'card' | 'list' = 'card';
   public todoLimit: number;
+  public viewType: 'card' | 'list' = 'card';
 
   constructor(private todoService: TodoService, private snackBar: MatSnackBar) { }
 
@@ -30,7 +30,6 @@ export class TodoListComponent implements OnInit {
     this.todoService.getTodos({
       category: this.todoCategory,
       status: this.todoStatus,
-      limit: this.todoLimit
     }).subscribe(returnedTodos => {
       // This inner function passed to `subscribe` will be called
       // when the `Observable` returned by `getTodos()` has one
@@ -57,7 +56,7 @@ export class TodoListComponent implements OnInit {
    */
   public updateFilter() {
     this.filteredTodos = this.todoService.filterTodos(
-      this.serverFilteredTodos, { owner: this.todoOwner, body: this.todoBody }
+      this.serverFilteredTodos, { owner: this.todoOwner, body: this.todoBody, limit: this.todoLimit }
     );
   }
 
