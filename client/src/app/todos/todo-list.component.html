@@ -6,7 +6,6 @@
       <mat-card-content fxLayout="column" >
 
         <div fxLayout="row wrap" fxLayoutGap="10px">
-          <!-- Examples of filtering in Angular -->
 
           <mat-form-field class="input-field">
             <mat-label>Owner</mat-label>
@@ -18,13 +17,12 @@
           <mat-form-field class="input-field">
             <mat-label>Body</mat-label>
             <input matInput id="todo-body-input" placeholder="Filter by body contents"
-            [(ngModel)]="todoCategory" (input)="updateFilter()">
+            [(ngModel)]="todoBody" (input)="updateFilter()">
             <mat-hint>Filtered on client</mat-hint>
           </mat-form-field>
         </div>
 
         <div fxLayout="row wrap" fxLayoutGap="10px">
-          <!-- Examples of filtering on the server -->
 
           <mat-form-field class="input-field">
             <mat-label>Status</mat-label>
