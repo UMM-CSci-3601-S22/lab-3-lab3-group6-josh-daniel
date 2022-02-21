@@ -3,5 +3,5 @@ export interface Todo {
   owner: string; // local filter
   status: boolean; // server filter
   body: string; // local filter
-  category: string; // server filter
+  category: string; // local filter
 }

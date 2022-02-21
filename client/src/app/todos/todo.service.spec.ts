@@ -107,7 +107,7 @@ describe('TodoService', () => {
       // Check that the request made to that URL was a GET request.
       expect(req.request.method).toEqual('GET');
 
-      // Check that the role parameter was 'admin'
+      // Check that the category parameter was 'Homework'
       expect(req.request.params.get('category')).toEqual('Homework');
 
       req.flush(testTodos);
@@ -128,7 +128,7 @@ describe('TodoService', () => {
       // Check that the request made to that URL was a GET request.
       expect(req.request.method).toEqual('GET');
 
-      // Check that the role parameters are correct
+      // Check that the parameters are correct
       expect(req.request.params.get('status')).toEqual('true');
       expect(req.request.params.get('category')).toEqual('Dog Stuff');
 
@@ -162,7 +162,7 @@ describe('TodoService', () => {
       // There should be one todo with an 'i' in the
       // owner: Daniel.
       expect(filteredTodos.length).toBe(1);
-      // Every returned todo's name should contain an 'i'.
+      // Every returned todo's owner's name should contain an 'i'.
       filteredTodos.forEach(todo => {
         expect(todo.owner.indexOf(todoOwner)).toBeGreaterThanOrEqual(0);
       });
@@ -179,7 +179,7 @@ describe('TodoService', () => {
       });
     });
 
-    it('filters by owner and body', () => {
+    it('filters by multiple parameters', () => {
       // There's only one todo (arthur_id) whose owner
       // contains an 'u' and whose body contains
       // an 'or'. There are two whose owner contains
