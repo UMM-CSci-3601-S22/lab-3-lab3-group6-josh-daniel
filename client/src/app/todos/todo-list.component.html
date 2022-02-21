@@ -82,8 +82,8 @@
           <mat-nav-list class="todo-nav-list">
             <h3 mat-subheader>Todos</h3>
             <a mat-list-item *ngFor="let todo of this.filteredTodos" [routerLink]="['/todos', todo._id]" class="todo-list-item">
-              <!--<img matListStatus [src]="todo.avatar" alt="Avatar for {{todo.name}}"> change to image matching status (if statement?) -->
               <h3 matLine class="todo-list-owner"> {{todo.owner}} </h3>
+              <h4 matLine class="todo-list-status"> {{todo.status}} </h4>
               <h4 matLine class="todo-list-category"> {{todo.category}} </h4>
               <p matLine class="todo-list-body"> {{todo.body}} </p>
             </a>
