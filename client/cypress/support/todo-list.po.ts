@@ -48,6 +48,6 @@ export class TodoListPage {
    * @param value The status *value* to select, this is what's found in the mat-option "value" attribute.
    */
   selectStatus(value: string) {
-    return cy.get(`[data-test=todoStatusSelect] .mat-select[value="${value}"]`).click();
+    return cy.get('[data-test=todoStatusSelect]').click().get(`mat-option[value="${value}"]`).click();
   }
 }
