@@ -34,16 +34,6 @@ export class TodoListPage {
   }
 
   /**
-   * Clicks the "view profile" button for the given todo card.
-   * Requires being in the "card" view.
-   *
-   * @param card The todo card
-   */
-  clickViewProfile(card: Cypress.Chainable<JQuery<HTMLElement>>) {
-    return card.find<HTMLButtonElement>('[data-test=viewProfileButton]').click();
-  }
-
-  /**
    * Change the view of todos.
    *
    * @param viewType Which view type to change to: "card" or "list".
@@ -53,11 +43,11 @@ export class TodoListPage {
   }
 
   /**
-   * Selects a role to filter in the "Role" selector.
+   * Selects a status to filter in the "status" selector.
    *
-   * @param value The role *value* to select, this is what's found in the mat-option "value" attribute.
+   * @param value The status *value* to select, this is what's found in the mat-option "value" attribute.
    */
-  selectRole(value: string) {
-    return cy.get('[data-test=todoRoleSelect]').click().get(`mat-option[value="${value}"]`).click();
+  selectStatus(value: string) {
+    return cy.get(`[data-test=todoStatusSelect] .mat-select[value="${value}"]`).click();
   }
 }
