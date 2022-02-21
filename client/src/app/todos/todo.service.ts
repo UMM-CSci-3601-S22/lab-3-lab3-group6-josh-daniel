@@ -13,7 +13,7 @@ export class TodoService {
   constructor(private httpClient: HttpClient) { }
 
   // Get the todos from the server, filtered by the information on the filters map
-  getTodos(filters?: {category?: string; status?: boolean }): Observable<Todo[]> {
+  getTodos(filters?: {category?: string; status?: boolean; limit?: number }): Observable<Todo[]> {
     let httpParams: HttpParams = new HttpParams();
     if (filters) {
       // not working
@@ -23,6 +23,10 @@ export class TodoService {
       // working
       if (filters.status) {
         httpParams = httpParams.set('status', filters.status);
+      }
+      // working
+      if (filters.limit) {
+        httpParams = httpParams.set('limit', filters.limit);
       }
     }
     // Send the HTTP GET request with the given URL and parameters.

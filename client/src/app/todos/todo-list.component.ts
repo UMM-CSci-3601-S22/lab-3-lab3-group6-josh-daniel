@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit {
   public todoBody: string;
   public todoCategory: string;
   public viewType: 'card' | 'list' = 'card';
+  public todoLimit: number;
 
   constructor(private todoService: TodoService, private snackBar: MatSnackBar) { }
 
@@ -28,7 +29,8 @@ export class TodoListComponent implements OnInit {
    getTodosFromServer() {
     this.todoService.getTodos({
       category: this.todoCategory,
-      status: this.todoStatus
+      status: this.todoStatus,
+      limit: this.todoLimit
     }).subscribe(returnedTodos => {
       // This inner function passed to `subscribe` will be called
       // when the `Observable` returned by `getTodos()` has one

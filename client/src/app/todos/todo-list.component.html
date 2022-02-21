@@ -42,7 +42,17 @@
           </mat-form-field>
         </div>
 
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <mat-form-field class="input-field">
+            <mat-label>Limit</mat-label>
+            <input matInput id="todo-limit-input" placeholder="Set amount of todos shown"
+            [(ngModel)]="todoLimit" (input)="getTodosFromServer()">
+            <mat-hint>Filtered on server</mat-hint>
+          </mat-form-field>
+        </div>
+
         <br>
+
         <div fxLayout="row wrap" fxLayoutGap="10px">
           <label>View type: </label>
           <mat-radio-group aria-label="View type" [(ngModel)]="viewType" data-test="viewTypeRadio">
